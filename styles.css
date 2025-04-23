@@ -35,9 +35,6 @@ nav ul li {
     margin: 0 10px;
 }
 
-
-
-
 nav ul li a {
     color: #fff;
     text-decoration: none;
@@ -67,8 +64,8 @@ nav ul li a {
 }
 
 .gallery img {
-    width: 100%; /* Mengatur lebar gambar agar responsif */
-    max-width: 200px; /* Mengatur lebar maksimum untuk gambar */
+    width: 50%; /* Mengatur lebar gambar agar responsif */
+    max-width: 100px; /* Mengatur lebar maksimum untuk gambar */
     margin: 0 15px; /* Jarak antara gambar */
     border-radius: 0px; /* Sudut melengkung pada gambar */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan pada gambar */
@@ -80,17 +77,17 @@ nav ul li a {
     aspect-ratio: 9 / 16; /* Rasio aspek untuk gambar 1, 2, 3, dan 4 */
 }
 
-/* Set aspect ratio for the sixth image (16:9) */
-.gallery img:nth-child(6),
-.gallery img:nth-child(7) {
-    aspect-ratio: 16 / 9; /* Rasio aspek untuk gambar keenam dan ketujuh */
-}
-
 /* Media query untuk perangkat mobile */
 @media (max-width: 600px) {
     .gallery img {
         width: 100%; /* Gambar mengambil lebar penuh pada perangkat mobile */
-        max-width: none; /* Menghapus batasan lebar maksimum pada perangkat mobile */
+        max-width: 120px; /* Mengatur lebar maksimum untuk gambar menjadi 120px */
+        height: auto; /* Mempertahankan rasio aspek */
+    }
+
+    /* Mengatur rasio aspek untuk gambar di perangkat mobile */
+    .gallery img:nth-child(-n+4) {
+        aspect-ratio: 4 / 6; /* Mengatur rasio aspek menjadi 4:6 untuk gambar 1, 2, 3, dan 4 */
     }
 }
 
@@ -159,26 +156,22 @@ button:hover {
     background: #002244; /* Biru dongker lebih gelap saat hover */
 }
 
+.testimoni {
+    overflow-x: auto; /* Mengizinkan scroll horizontal */
+    white-space: nowrap; /* Mencegah elemen membungkus ke baris berikutnya */
+}
 
 .testimoni-container {
-    display: flex; /* Mengatur kontainer untuk menggunakan flexbox */
-    justify-content: center; /* Memusatkan gambar di dalam kontainer */
-    gap: 15px; /* Jarak antara gambar */
+    display: inline-block; /* Mengatur kontainer untuk inline-block agar bisa digeser */
 }
 
 .testimoni img {
-    width: 200px; /* Mengatur lebar gambar */
+    width: 100px; /* Mengatur lebar gambar */
     height: auto; /* Mempertahankan rasio aspek */
+    margin: 0 15px; /* Jarak antara gambar */
     border-radius: 0px; /* Sudut melengkung pada gambar */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan pada gambar */
 }
-
-/* Mengatur rasio aspek untuk gambar */
-.testimoni img {
-    aspect-ratio: 4 / 3; /* Mengatur rasio aspek gambar 4:3 */
-}
-
-
 
 iframe {
     width: 100%;
@@ -218,8 +211,6 @@ lokasi {
     margin: 10px 10;
     width: 10%;
     text-align: center;
-	
-	
 	
 #form-hasil-foto {
     padding: 20px;
