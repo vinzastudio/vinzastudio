@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Foto Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Website Vinza Studio</h1> <p></p>
+        <nav>
+            <ul>
+                <li><a href="#landing">Beranda</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#katalog">Katalog</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+			    <li><a href="#downloadfile">Download File</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="landing" class="landing">
+        <h2>Abadikan Momen Spesial Anda Bersama Kami</h2>
+        <div class="gallery">
+		
+
+		<img src="selfvinaalfa.jpg" alt="Foto 2">
+        <img src="selfizzankostum.jpg" alt="Foto 1">
+		<img src="selfvinabando.jpg" alt="Foto 4">
+		<img src="selfvinabox.jpg" alt="Foto 5">
+		<img src="selfizzan.jpg" alt="Foto 6">
+		<img src="hbdsucia.jpg" alt="Foto 7">
+		<img src="izzanwisuda.jpg" alt="Foto 7">
+
+
+        </div>
+    </section>
+
+<section id="booking">
+    <h2>Booking Pemesanan</h2>
+    <form id="bookingForm">
+        <label for="name">Nama Lengkap:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="pilih katalog">Katalog (Mau Foto Pemotretan Seperti Apa?):</label>
+        <select id="pilih mau foto apa" name="katalog" required>
+            <option value="">Pilih Katalog</option>
+            <option value="Self Photo">Self Photo</option>
+            <option value="Photo Graduation">Photo Graduation</option>
+            <option value="Photo Keluarga">Photo Keluarga</option>
+            <option value="Photo Event Acara">Photo Event Acara</option>
+        </select>
+
+        <label for="date">Tanggal Pemotretan:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Waktu Pemotretan:</label>
+        <select id="time" name="time" required>
+            <option value="">Pilih Waktu</option>
+            <option value="08:30">08:30</option>
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+        </select>
+
+        <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
+    </form>
+</section>
+
+<script>
+    function sendWhatsApp() {
+        const name = document.getElementById('name').value;
+        const katalog = document.getElementById('katalog').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+
+        // Validasi form
+        if (!name || !katalog || !date || !time) {
+            alert("Silakan lengkapi semua form nya terlebih dahulu.");
+            return; // Hentikan eksekusi jika ada field yang kosong
+        }
+
+        const message = `Halo, saya ingin memesan pemotretan:\nNama: ${name}\nKatalog: ${katalog}\nTanggal: ${date}\nWaktu: ${time}`;
+        const phoneNumber = '6285353378007'; // Ganti dengan nomor WhatsApp Anda
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        window.open(url, '_blank');
+    }
+</script>
+
+ <section id="testimoni">
+    <h2>Testimoni Pelanggan</h2>
+ <div class="testimoni-container">
+        <div class="testimoni">
+            <img src="testimonihajir.jpg" alt="Testimoni Hajir" class="testimoni-image">
+            <p>Testimoni dari pelanggan : "Hasil foto dari Vinza Studio bagus!"</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="katalog" class="katalog">
+    <h2>Katalog</h2>
+    <div class="gallery">
+        <a href="pricelistself.jpg" target="_blank"> <!-- Membungkus gambar dengan tag <a> -->
+            <img src="pricelistself.jpg" alt="Foto 1">
+        </a>
+        <p>Price List Self Photo</p>
+    </div>
+</section>
+
+
+<section id="lokasi">
+    <h2>Lokasi Kami</h2>
+    <div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d990.6456676299998!2d108.419848!3d-6.698496!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6edf005d009ecd%3A0x7f1cd1f51ab2c50a!2sVinza%20Studio!5e0!3m2!1sen!2sid!4v1745255407644!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+    </div>
+    <p>Temukan lokasi kami di <a href="https://maps.app.goo.gl/wcb3oAR3zA5cYX4Y7" target="_blank">Google Maps</a>.</p>
+</section>
+
+
+
+    <section id="downloadfile">
+        <h2>Download File Pelanggan</h2>
+        <form id="fotoForm" onsubmit="return showPhotos(event)">
+            <label for="nama">Nama Pelanggan (Format: Nama Lengkap):</label>
+            <input type="text" id="nama" name="nama" required placeholder="Izzan">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Lihat Hasil Foto</button>
+        </form>
+    </section>
+
+    <script>
+        const photosData = {
+            "Izzan": { password: "Izzan", link: "https://drive.google.com/your_link_1" },
+            "Nama Lengkap - Jane Smith": { password: "password2", link: "https://drive.google.com/your_link_2" },
+            "Nama Lengkap - Alice Johnson": { password: "password3", link: "https://drive.google.com/your_link_3" },
+        };
+
+        function showPhotos(event) {
+            event.preventDefault(); // Mencegah pengiriman form
+
+            const nama = document.getElementById('nama').value;
+            const password = document.getElementById('password').value;
+
+            // Memeriksa apakah nama dan password cocok
+            if (photosData[nama] && photosData[nama].password === password) {
+                // Mengarahkan ke link Google Drive
+                window.location.href = photosData[nama].link;
+            } else {
+                alert("Nama atau password salah. Silakan coba lagi.");
+            }
+        }
+    </script>
+</body>
+</html>
