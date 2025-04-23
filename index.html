@@ -72,6 +72,9 @@
             <option value="14:30">14:30</option>
             <option value="15:00">15:00</option>
         </select>
+		<label for="dpProof">Unggah Bukti DP:</label>
+        <input type="file" id="dpProof" accept="image/*">
+<br></br>
 
         <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
     </form>
@@ -84,13 +87,13 @@
         const date = document.getElementById('date').value;
         const time = document.getElementById('time').value;
 
-        // Validasi form
-        if (!name || !katalog || !date || !time) {
-            alert("Silakan lengkapi semua form nya terlebih dahulu.");
-            return; // Hentikan eksekusi jika ada field yang kosong
-        }
+        // Membuat pesan berdasarkan field yang diisi
+        let message = "Halo, saya ingin memesan pemotretan:";
+        if (name) message += `\nNama: ${name}`;
+        if (katalog) message += `\nKatalog: ${katalog}`;
+        if (date) message += `\nTanggal: ${date}`;
+        if (time) message += `\nWaktu: ${time}`;
 
-        const message = `Halo, saya ingin memesan pemotretan:\nNama: ${name}\nKatalog: ${katalog}\nTanggal: ${date}\nWaktu: ${time}`;
         const phoneNumber = '6285353378007'; // Ganti dengan nomor WhatsApp Anda
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -98,19 +101,17 @@
     }
 </script>
 
- <section id="testimoni">
-    <h2>Testimoni Pelanggan</h2>
- <div class="testimoni-container">
-        <div class="testimoni">
-            <img src="testimonihajir.jpg" alt="Testimoni Hajir" class="testimoni-image">
-            <p>Testimoni dari pelanggan : "Hasil foto dari Vinza Studio bagus!"</p>
-        </div>
-
+<section id="testimoni" class="testimoni">
+    <h2>Testimoni</h2>
+    <div class="testimoni-container">
+        <img src="testimonihajir.jpg" alt="Testimoni Hajir">
+        <img src="testimonipasphoto.jpg" alt="Testimoni Pas Photo">
+        <img src="testimonipasphoto2.jpg" alt="Testimoni Pas Photo2">
     </div>
 </section>
 
 <section id="katalog" class="katalog">
-    <h2>Katalog</h2>
+    <h2> </h2>
     <div class="gallery">
         <a href="pricelistself.jpg" target="_blank"> <!-- Membungkus gambar dengan tag <a> -->
             <img src="pricelistself.jpg" alt="Foto 1">
