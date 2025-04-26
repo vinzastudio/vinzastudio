@@ -16,6 +16,20 @@ header {
     text-align: center;
 }
 
+.gallery {
+    display: flex; /* Menyusun gambar secara horizontal */
+    flex-wrap: wrap; /* Membungkus gambar ke baris berikutnya jika tidak muat */
+    justify-content: center; /* Menyusun gambar di tengah */
+    gap: 10px; /* Jarak antar gambar */
+}
+
+.gallery img {
+    width: 100%; /* Mengatur lebar gambar 100% dari kontainer */
+    height: auto; /* Mengatur tinggi otomatis untuk menjaga rasio */
+    aspect-ratio: 3 / 4; /* Mengatur rasio aspek 3:4 */
+    object-fit: cover; /* Memastikan gambar mengisi area dengan baik */
+    border-radius: 5px; /* Menambahkan sudut melengkung pada gambar */
+}
 section {
     padding: 20px;
     margin: 20px;
