@@ -1,114 +1,24 @@
 * {
     box-sizing: border-box;
-    margin: 50;
-    padding: 20;
+    margin: 0;
+    padding: 0;
 }
-
 
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.0;
     background-color: #f9f9f9; /* Warna latar belakang */
 }
-
 
 header {
     background: #003366; /* Biru dongker */
     color: #fff;
-    padding: 30px 0;
+    padding: 20px;
     text-align: center;
-}
- header h1 {
-	 font-size: 32px;
-    padding: 0px 0px;
-    text-align: center;
- }
- 
-nav ul {
-    font-size: 14px;
-	list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: light;
-}
-
-.landing {
-    background: #fff; /* Putih */
-    color: #003366; /* Biru dongker */
-    padding: 50px 40px;
-    text-align: center;
-    border-bottom: 5px solid #e0cda9; /* Cream */
-}
-
-.landing h2 {
-    font-size: 2.0em;
-}
-
-.landing p {
-    font-size: 1.2em;
-}
-
-.gallery {
-    display: flex; /* Mengatur kontainer untuk menggunakan flexbox */
-    flex-wrap: wrap; /* Membuat gambar membungkus ke baris berikutnya jika tidak muat */
-    justify-content: center; /* Memusatkan gambar di dalam kontainer */
-}
-
-.gallery img {
-    width: 50%; /* Mengatur lebar gambar agar responsif */
-    max-width: 100px; /* Mengatur lebar maksimum untuk gambar */
-    margin: 0 15px; /* Jarak antara gambar */
-    border-radius: 0px; /* Sudut melengkung pada gambar */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan pada gambar */
-    height: auto; /* Mempertahankan rasio aspek */
-}
-
-/* Set aspect ratio for images 1 to 4 (9:16) */
-.gallery img:nth-child(-n+4) {
-    aspect-ratio: 9 / 16; /* Rasio aspek untuk gambar 1, 2, 3, dan 4 */
-}
-
-/* Media query untuk perangkat mobile */
-@media (max-width: 600px) {
-    .gallery img {
-        width: 100%; /* Gambar mengambil lebar penuh pada perangkat mobile */
-        max-width: 120px; /* Mengatur lebar maksimum untuk gambar menjadi 120px */
-        height: auto; /* Mempertahankan rasio aspek */
-    }
-
-    /* Mengatur rasio aspek untuk gambar di perangkat mobile */
-    .gallery img:nth-child(-n+4) {
-        aspect-ratio: 4 / 6; /* Mengatur rasio aspek menjadi 4:6 untuk gambar 1, 2, 3, dan 4 */
-    }
-}
-
-.btn {
-    display: inline-block;
-    background: #e0cda9; /* Cream */
-    color: #003366; /* Biru dongker */
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.btn:hover {
-    background: #d1b89a; /* Warna cream lebih gelap saat hover */
 }
 
 section {
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px;
     background: #fff; /* Putih */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -121,19 +31,17 @@ h2 {
 }
 
 form {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 label {
     display: block;
     margin: 10px 0 5px;
-    color: #003366; /* Biru dongker */
 }
 
 input[type="text"],
 input[type="date"],
-textarea,
 select {
     width: 100%;
     padding: 10px;
@@ -154,160 +62,4 @@ button {
 
 button:hover {
     background: #002244; /* Biru dongker lebih gelap saat hover */
-}
-
-.testimoni {
-    overflow-x: auto; /* Mengizinkan scroll horizontal */
-    white-space: nowrap; /* Mencegah elemen membungkus ke baris berikutnya */
-}
-
-.testimoni-container {
-    display: inline-block; /* Mengatur kontainer untuk inline-block agar bisa digeser */
-}
-
-.testimoni img {
-    width: 100px; /* Mengatur lebar gambar */
-    height: auto; /* Mempertahankan rasio aspek */
-    margin: 0 15px; /* Jarak antara gambar */
-    border-radius: 0px; /* Sudut melengkung pada gambar */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan pada gambar */
-}
-
-iframe {
-    width: 100%;
-    height: 450px;
-    border: 0;
-    border-radius: 5px;
-}
-
-.katalog {
-    background: #f0f0f0; /* Warna latar belakang katalog */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px; /* Padding di dalam katalog */
-    margin: 10px auto; /* Margin otomatis untuk memusatkan katalog */
-    width: 80%; /* Lebar katalog */
-    text-align: center; /* Teks di tengah */
-}
-
-.katalog img {
-    width: 100%; /* Mengatur lebar gambar menjadi 100% dari elemen katalog */
-    height: auto; /* Memastikan proporsi gambar tetap terjaga */
-    max-width: 800px; /* Meningkatkan lebar maksimum gambar */
-    border-radius: 5px; /* Menambahkan sudut melengkung pada gambar */
-    cursor: pointer; /* Menambahkan kursor pointer untuk menunjukkan bahwa gambar dapat diklik */
-    transition: transform 0.2s; /* Menambahkan efek transisi saat hover */
-}
-
-.katalog img:hover {
-    transform: scale(1.05); /* Efek zoom saat hover */
-}
-}
-lokasi {
-    background: #f0f0f0; /* Warna latar belakang testimoni */
-    border: 100px solid #ddd;
-    border-radius: 15px;
-    padding: 5px;
-    margin: 10px 10;
-    width: 10%;
-    text-align: center;
-	
-#form-hasil-foto {
-    padding: 20px;
-    background: #e0f7fa; /* Warna latar belakang */
-    border-radius: 5px; /* Sudut melengkung */
-    margin: 20px 0;
-}
-
-form {
-    display: flex;
-    flex-direction: column; /* Mengatur form dalam kolom */
-    margin-bottom: 20px; /* Jarak antara form dan hasil foto */
-}
-
-label {
-    margin-bottom: 5px; /* Jarak antara label dan input */
-}
-
-input {
-    padding: 10px;
-    margin-bottom: 15px; /* Jarak antara input */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px; /* Sudut melengkung */
-}
-
-button {
-    padding: 10px;
-    background: #007bff; /* Warna latar belakang tombol */
-    color: white; /* Warna teks tombol */
-    border: none; /* Tanpa border */
-    border-radius: 5px; /* Sudut melengkung */
-    cursor: pointer; /* Pointer saat hover */
-}
-
-button:hover {
-    background: #0056b3; /* Warna latar belakang tombol saat hover */
-}
-
-.hidden {
-    display: none; /* Menyembunyikan elemen */
-}
-
-.foto-container {
-    display: flex;
-    flex-wrap: wrap; /* Mengatur foto dalam beberapa baris */
-    justify-content: space-around; /* Menyebar foto secara merata */
-}
-
-.foto-item {
-    background: #fff; /* Warna latar belakang item foto */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px; /* Sudut melengkung */
-    padding: 15px;
-    margin: 10px;
-    text-align: center; /* Pusatkan teks */
-    width: 30%; /* Lebar item foto */
-}
-
-.foto-pelanggan {
-    width: 100%; /* Lebar gambar sesuai kontainer */
-    height: auto; /* Tinggi otomatis */
-    border-radius: 5px; /* Sudut melengkung gambar */
-}
-
-#form-hasil-foto {
-    padding: 20px;
-    background: #e0f7fa; /* Warna latar belakang */
-    border-radius: 5px; /* Sudut melengkung */
-    margin: 20px 0;
-}
-
-form {
-    display: flex;
-    flex-direction: column; /* Mengatur form dalam kolom */
-    margin-bottom: 20px; /* Jarak antara form dan hasil foto */
-}
-
-label {
-    margin-bottom: 5px; /* Jarak antara label dan input */
-}
-
-input {
-    padding: 10px;
-    margin-bottom: 15px; /* Jarak antara input */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px; /* Sudut melengkung */
-}
-
-button {
-    padding: 10px;
-    background: #007bff; /* Warna latar belakang tombol */
-    color: white; /* Warna teks tombol */
-    border: none; /* Tanpa border */
-    border-radius: 5px; /* Sudut melengkung */
-    cursor: pointer; /* Pointer saat hover */
-}
-
-button:hover {
-    background: #0056b3; /* Warna latar belakang tombol saat hover */
 }
