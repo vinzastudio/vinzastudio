@@ -37,66 +37,77 @@
     </section>
 
 <section id="booking">
-    <h2>Booking Pemesanan</h2>
+    <h2>Form Booking</h2>
     <form id="bookingForm">
         <label for="name">Nama Lengkap:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="pilih katalog">Katalog (Mau Foto Pemotretan Seperti Apa?):</label>
-        <select id="pilih mau foto apa" name="katalog" required>
-            <option value="">Pilih Katalog</option>
-            <option value="Self Photo">Self Photo</option>
-            <option value="Photo Graduation">Photo Graduation</option>
-            <option value="Photo Keluarga">Photo Keluarga</option>
-            <option value="Photo Event Acara">Photo Event Acara</option>
-        </select>
-
         <label for="date">Tanggal Pemotretan:</label>
-        <input type="date" id="date" name="date" required>
+        <input type="date" id="date" name="date" required onchange="updateAvailableTimes()">
+
+        <label for="day">Hari:</label>
+        <select id="day" name="day" required onchange="updateAvailableTimes()">
+            <option value="">Pilih Hari</option>
+            <option value="Senin">Senin</option>
+            <option value="Selasa">Selasa</option>
+            <option value="Rabu">Rabu</option>
+            <option value="Kamis">Kamis</option>
+            <option value="Jumat">Jumat</option>
+            <option value="Sabtu">Sabtu</option>
+            <option value="Minggu">Minggu</option>
+        </select>
 
         <label for="time">Waktu Pemotretan:</label>
         <select id="time" name="time" required>
             <option value="">Pilih Waktu</option>
-            <option value="08:30">08:30</option>
-            <option value="09:00">09:00</option>
-            <option value="09:30">09:30</option>
-            <option value="10:00">10:00</option>
-            <option value="10:30">10:30</option>
-            <option value="11:00">11:00</option>
-            <option value="11:30">11:30</option>
-            <option value="13:00">13:00</option>
-            <option value="13:30">13:30</option>
-            <option value="14:00">14:00</option>
-            <option value="14:30">14:30</option>
-            <option value="15:00">15:00</option>
         </select>
-
-<br></br>
 
         <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
     </form>
-</section>
 
-<script>
-    function sendWhatsApp() {
-        const name = document.getElementById('name').value;
-        const katalog = document.getElementById('katalog').value;
-        const date = document.getElementById('date').value;
-        const time = document.getElementById('time').value;
+    <script>
+        const availableTimes = {
+            "Senin": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
+            "Selasa": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
+            "Rabu": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
+            "Kamis": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
+            "Jumat": ["13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
+            "Sabtu": ["13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "21:00"],
+            "Minggu": ["10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"]
+        };
 
-        // Membuat pesan berdasarkan field yang diisi
-        let message = "Halo, saya ingin memesan pemotretan:";
-        if (name) message += `\nNama: ${name}`;
-        if (katalog) message += `\nKatalog: ${katalog}`;
-        if (date) message += `\nTanggal: ${date}`;
-        if (time) message += `\nWaktu: ${time}`;
+        function updateAvailableTimes() {
+            const daySelect = document.getElementById('day');
+            const timeSelect = document.getElementById('time');
+            const selectedDay = daySelect.value;
 
-        const phoneNumber = '6285353378007'; // Ganti dengan nomor WhatsApp Anda
-        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            // Menghapus semua opsi waktu yang ada
+            timeSelect.innerHTML = '<option value="">Pilih Waktu</option>';
 
-        window.open(url, '_blank');
-    }
-</script>
+            // Menambahkan opsi waktu yang sesuai dengan hari yang dipilih
+            if (availableTimes[selectedDay]) {
+                availableTimes[selectedDay].forEach(time => {
+                    const option = document .createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                });
+            }
+        }
+
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const day = document.getElementById('day').value;
+            const time = document.getElementById('time').value;
+
+            const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}`;
+            const phoneNumber = '6285353378007';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(url, '_blank');
+        }
+    </script>
 
 <section id="testimoni" class="testimoni">
     <h2>Testimoni</h2>
