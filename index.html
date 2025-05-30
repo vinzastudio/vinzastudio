@@ -108,8 +108,8 @@
             </select>
 
             <div class="payment-info" id="paymentInfo">Total Pembayaran: Rp 15.000</div>
-            <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dulu dari total pembayaran ke rekening ShopeePay dan Dana dengan nomor 085353378007.</div>
-            <div class="note">Harap datang maksimal 15 menit sebelum pemotretan, jika pada saat pas jam pemotretan belum datang maka antrian dihapus dan antirian dipindahkan pada jam yang kosong sesuai antrian di studio.</div>
+            <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dari total pembayaran ke rekening ShopeePay dan Dana dengan nomor 085353378007.</div>
+            <div class="note">Harap datang maksimal 15 menit sebelum pemotretan.</div>
 
             <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
         </form>
@@ -119,7 +119,7 @@
                 "Senin": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
                 "Selasa": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
                 "Rabu": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
-                "Kamis": ["13:30", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
+                "Kamis": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
                 "Jumat": ["14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
                 "Sabtu": ["14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
                 "Minggu": ["10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]
@@ -147,7 +147,8 @@
             function updatePayment() {
                 const jumlah = document.getElementById('jumlah').value;
                 const total = 15000 * jumlah; // Menghitung total pembayaran
-                document.getElementById('paymentInfo').textContent = `Total Pembayaran: Rp ${total}`;
+                const dp = total * 0.5; // Menghitung DP 50%
+                document.getElementById('paymentInfo').textContent = `Total Pembayaran: Rp ${total} (DP: Rp ${dp})`;
             }
 
             function sendWhatsApp() {
@@ -157,8 +158,9 @@
                 const time = document.getElementById('time').value;
                 const jumlah = document.getElementById('jumlah').value;
                 const total = 15000 * jumlah;
+                const dp = total * 0.5;
 
-                const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}\nJumlah Orang: ${jumlah}\nTotal Pembayaran: Rp ${total}`;
+                const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}\nJumlah Orang: ${jumlah}\nTotal Pembayaran: Rp ${total}\nDP: Rp ${dp}\nSilakan transfer ke ShopeePay dan Dana dengan nomor 085353378007.`;
                 const phoneNumber = '6285353378007'; // Nomor ShopeePay dan Dana
                 const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
