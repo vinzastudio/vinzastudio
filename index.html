@@ -5,10 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Foto Profesional</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS untuk styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .payment-info {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #FF5733; /* Warna untuk informasi pembayaran */
+        }
+
+        .note {
+            margin-top: 10px;
+            font-style: italic;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Selamat Datang di Website Vinza Studio</h1> <p></p>
+        <h1>Selamat Datang di Website Vinza Studio</h1>
         <nav>
             <ul>
                 <li><a href="#landing">Beranda</a></li>
@@ -16,129 +62,137 @@
                 <li><a href="#testimoni">Testimoni</a></li>
                 <li><a href="#katalog">Katalog</a></li>
                 <li><a href="#lokasi">Lokasi</a></li>
-			    <li><a href="#downloadfile">Download File</a></li>
+                <li><a href="#downloadfile">Download File</a></li>
             </ul>
         </nav>
     </header>
 
-<section id="landing" class="landing">
-    <h2>Abadikan Momen Spesial Anda Bersama Kami</h2>
-    <div class="gallery">
-        <img src="selfvinaalfa.jpg" alt="Foto 2">
-        <img src="selfizzankostum.jpg" alt="Foto 1">
-        <img src="selfvinabando.jpg" alt="Foto 4">
-        <img src="selfvinabox.jpg" alt="Foto 5">
-        <img src="selfizzan.jpg" alt="Foto 6">
-    </div>
-</section>
+    <section id="landing" class="landing">
+        <h2>Abadikan Momen Spesial Anda Bersama Kami</h2>
+        <div class="gallery">
+            <img src="selfvinaalfa.jpg" alt="Foto 2">
+            <img src="selfizzankostum.jpg" alt="Foto 1">
+            <img src="selfvinabando.jpg" alt="Foto 4">
+            <img src="selfvinabox.jpg" alt="Foto 5">
+            <img src="selfizzan.jpg" alt="Foto 6">
+        </div>
+    </section>
 
-<section id="booking">
-    <h2>Form Booking</h2>
-    <form id="bookingForm">
-        <label for="name">Nama Lengkap:</label>
-        <input type="text" id="name" name="name" required>
+    <section id="booking">
+        <h2>Form Booking</h2>
+        <form id="bookingForm">
+            <label for="name">Nama Lengkap:</label>
+            <input type="text" id="name" name="name" required>
 
-	<label for="jumlah">Jumlah Orang:</label>
-        <input type="text" id="jumlah" name="jumlah" required>
-	    
-        <label for="date">Tanggal Pemotretan:</label>
-        <input type="date" id="date" name="date" required onchange="updateAvailableTimes()">
+            <label for="jumlah">Jumlah Orang:</label>
+            <input type="number" id="jumlah" name="jumlah" required value="1" onchange="updatePayment()">
 
-        <label for="day">Hari:</label>
-        <select id="day" name="day" required onchange="updateAvailableTimes()">
-            <option value="">Pilih Hari</option>
-            <option value="Senin">Senin</option>
-            <option value="Selasa">Selasa</option>
-            <option value="Rabu">Rabu</option>
-            <option value="Kamis">Kamis</option>
-            <option value="Jumat">Jumat</option>
-            <option value="Sabtu">Sabtu</option>
-            <option value="Minggu">Minggu</option>
-        </select>
+            <label for="date">Tanggal Pemotretan:</label>
+            <input type="date" id="date" name="date" required onchange="updateAvailableTimes()">
 
-        <label for="time">Waktu Pemotretan:</label>
-        <select id="time" name="time" required>
-            <option value="">Pilih Waktu</option>
-        </select>
+            <label for="day">Hari:</label>
+            <select id="day" name="day" required onchange="updateAvailableTimes()">
+                <option value="">Pilih Hari</option>
+                <option value="Senin">Senin</option>
+                <option value="Selasa">Selasa</option>
+                <option value="Rabu">Rabu</option>
+                <option value="Kamis">Kamis</option>
+                <option value="Jumat">Jumat</option>
+                <option value="Sabtu">Sabtu</option>
+                <option value="Minggu">Minggu</option>
+            </select>
 
-        <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
-    </form>
+            <label for="time">Waktu Pemotretan:</label>
+            <select id="time" name="time" required>
+                <option value="">Pilih Waktu</option>
+            </select>
 
-    <script>
-        const availableTimes = {
-            "Senin": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
-            "Selasa": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
-            "Rabu": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
-            "Kamis": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
-            "Jumat": ["13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"],
-            "Sabtu": ["13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "21:00"],
-            "Minggu": ["10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00"]
-        };
+            <div class="payment-info" id="paymentInfo">Total Pembayaran: Rp 15.000</div>
+            <div class="note">Silakan melakukan pembayaran ke ShopeePay dan Dana dengan nomor 085353378007.</div>
+            <div class="note">DP sebesar 50% diperlukan, dan harap datang 15 menit sebelum pemotretan.</div>
 
-        function updateAvailableTimes() {
-            const daySelect = document.getElementById('day');
-            const timeSelect = document.getElementById('time');
-            const selectedDay = daySelect.value;
+            <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
+        </form>
 
-            // Menghapus semua opsi waktu yang ada
-            timeSelect.innerHTML = '<option value="">Pilih Waktu</option>';
+        <script>
+            const availableTimes = {
+                "Senin": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
+                "Selasa": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
+                "Rabu": ["13:00", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
+                "Kamis": ["13:30", "13:30", "14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
+                "Jumat": ["14:00", "14:30", "15:00", "17:00", "17:30", "18:00"],
+                "Sabtu": ["14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
+                "Minggu": ["10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]
+            };
 
-            // Menambahkan opsi waktu yang sesuai dengan hari yang dipilih
-            if (availableTimes[selectedDay]) {
-                availableTimes[selectedDay].forEach(time => {
-                    const option = document .createElement('option');
-                    option.value = time;
-                    option.textContent = time;
-                    timeSelect.appendChild(option);
-                });
+            function updateAvailableTimes() {
+                const daySelect = document.getElementById('day');
+                const timeSelect = document.getElementById('time');
+                const selectedDay = daySelect.value;
+
+                // Menghapus semua opsi waktu yang ada
+                timeSelect.innerHTML = '<option value="">Pilih Waktu</option>';
+
+                // Menambahkan opsi waktu yang sesuai dengan hari yang dipilih
+                if (availableTimes[selectedDay]) {
+                    availableTimes[selectedDay].forEach(time => {
+                        const option = document.createElement('option');
+                        option.value = time;
+                        option.textContent = time;
+                        timeSelect.appendChild(option);
+                    });
+                }
             }
-        }
 
-        function sendWhatsApp() {
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const day = document.getElementById('day').value;
-            const time = document.getElementById('time').value;
+            function updatePayment() {
+                const jumlah = document.getElementById('jumlah').value;
+                const total = 15000 * jumlah; // Menghitung total pembayaran
+                document.getElementById('paymentInfo').textContent = `Total Pembayaran: Rp ${total}`;
+            }
 
-            const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}`;
-            const phoneNumber = '6285720800272';
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            function sendWhatsApp() {
+                const name = document.getElementById('name').value;
+                const date = document.getElementById('date').value;
+                const day = document.getElementById('day').value;
+                const time = document.getElementById('time').value;
+                const jumlah = document.getElementById('jumlah').value;
+                const total = 15000 * jumlah;
 
-            window.open(url, '_blank');
-        }
-    </script>
+                const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}\nJumlah Orang: ${jumlah}\nTotal Pembayaran: Rp ${total}`;
+                const phoneNumber = '6285353378007'; // Nomor ShopeePay dan Dana
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-<section id="testimoni" class="testimoni">
-    <h2>Testimoni</h2>
-    <div class="testimoni-container">
-        <img src="testimonihajir.jpg" alt="Testimoni Hajir">
-		<br></br>
-        <img src="testimonipasphoto.jpg" alt="Testimoni Pas Photo">
-		<br></br>
-        <img src="testimonipasphoto2.jpg" alt="Testimoni Pas Photo2">
-    </div>
-</section>
+                window.open(url, '_blank');
+            }
+        </script>
+    </section>
 
-<section id="katalog" class="katalog">
-    <h2> </h2>
-    <div class="gallery">
-        <a href="pricelistmei2025.jpg" target="_blank"> <!-- Membungkus gambar dengan tag <a> -->
-            <img src="pricelistmei2025.jpg" alt="Foto 1">
-        </a>
-        <p>Price List Self Photo</p>
-    </div>
-</section>
+    <section id="testimoni" class="testimoni">
+        <h2>Testimoni</h2>
+        <div class="testimoni-container">
+            <img src="testimonihajir.jpg" alt="Testimoni Hajir">
+            <img src="testimonipasphoto.jpg" alt="Testimoni Pas Photo">
+            <img src="testimonipasphoto2.jpg" alt="Testimoni Pas Photo2">
+        </div>
+    </section>
 
+    <section id="katalog" class="katalog">
+        <h2> </h2>
+        <div class="gallery">
+            <a href="pricelistmei2025.jpg" target="_blank">
+                <img src="pricelistmei2025.jpg" alt="Foto 1">
+            </a>
+            <p>Price List Self Photo</p>
+        </div>
+    </section>
 
-<section id="lokasi">
-    <h2>Lokasi Kami</h2>
-    <div class="map-container">
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d990.6456676299998!2d108.419848!3d-6.698496!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6edf005d009ecd%3A0x7f1cd1f51ab2c50a!2sVinza%20Studio!5e0!3m2!1sen!2sid!4v1745255407644!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
-    </div>
-    <p>Temukan lokasi kami di <a href="https://maps.app.goo.gl/wcb3oAR3zA5cYX4Y7" target="_blank">Google Maps</a>.</p>
-</section>
-
-
+    <section id="lokasi">
+        <h2>Lokasi Kami</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d990.6456676299998!2d108.419848!3d-6.698496!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6edf005d009ecd%3A0x7f1cd1f51ab2c50a!2sVinza%20Studio!5e0!3m2!1sen!2sid!4v1745255407644!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p>Temukan lokasi kami di <a href="https://maps.app.goo.gl/wcb3oAR3zA5cYX4Y7" target="_blank">Google Maps</a>.</p>
+    </section>
 
     <section id="downloadfile">
         <h2>Download File Pelanggan</h2>
