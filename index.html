@@ -105,10 +105,10 @@
             </select>
 
             <label for="date">Tanggal Pemotretan:</label>
-            <input type="date" id="date" name="date" required onchange="updateAvailableTimes()">
+            <input type="date" id="date" name="date" required onchange="updateDayAndAvailableTimes()">
 
             <label for="day">Hari:</label>
-            <select id="day" name="day" required onchange="updateAvailableTimes()">
+            <select id="day" name="day" required>
                 <option value="">Pilih Hari</option>
                 <option value="Senin">Senin</option>
                 <option value="Selasa">Selasa</option>
@@ -124,13 +124,14 @@
                 <option value="">Pilih Waktu</option>
             </select>
             <div class="note">
+                Sebelum melakukan pembayaran, silakan konfirmasi ketersediaan waktu booking melalui WhatsApp: 
+                <span class="whatsapp-link" onclick="openWhatsApp()">085720800272</span>
+            </div>
 
             <div class="payment-info" id="paymentInfo">Total Pembayaran: Rp 15.000 (DP: Rp 7.500)</div>
             <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dari total pembayaran ke rekening ShopeePay dan Dana dengan nomor 085353378007.</div>
             <div class="note">Harap datang maksimal 15 menit sebelum pemotretan.</div>
-                
-                <div Sebelum melakukan pembayaran silakan lengkapi data booking dan tanyakan ke admin ketersediaan waktu apakah ada: 
-            </div>
+
             <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
         </form>
 
@@ -144,6 +145,15 @@
                 "Sabtu": ["14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
                 "Minggu": ["10:00", "10:30", "11:00", "11:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"]
             };
+
+            function updateDayAndAvailableTimes() {
+                const dateInput = document.getElementById('date');
+                const selectedDate = new Date(dateInput.value);
+                const options = { weekday: 'long' };
+                const dayName = selectedDate.toLocaleDateString('id-ID', options);
+                document.getElementById('day').value = dayName;
+                updateAvailableTimes();
+            }
 
             function updateAvailableTimes() {
                 const daySelect = document.getElementById('day');
@@ -172,7 +182,7 @@
             }
 
             function openWhatsApp() {
-                const phoneNumber = '6285720800272';
+                const phoneNumber = '085720800272';
                 const message = 'Halo, saya ingin konfirmasi ketersediaan waktu booking.';
                 const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                 window.open(url, '_blank');
