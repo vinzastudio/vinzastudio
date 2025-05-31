@@ -197,7 +197,7 @@
                     return;
                 }
 
-                const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}\nJumlah Orang: ${jumlah}\nTotal Pembayaran: Rp ${total.toLocaleString('id-ID')}\nDP: Rp ${dp.toLocaleString('id-ID')}\nMohon menunggu jawaban dari Admin untuk ketersediaan waktu dan jika admin telah menjawab waktu tersebut tersedia silahkan melakukan pembayaran DP sebesar 50% ke ShopeePay dan Dana dengan nomor 085353378007 (atas nama Vinza Studio / Izzan).`;
+                const message = `Halo vinza studio, saya mau foto.\nNama: ${name}\nTanggal: ${date}\nHari: ${day}\nWaktu: ${time}\nJumlah Orang: ${jumlah}\nTotal Pembayaran: Rp ${total.toLocaleString('id-ID')}\nDP: Rp ${dp.toLocaleString('id-ID')}\nMohon menunggu jawaban dari Admin untuk ketersediaan waktu\n jika admin telah menjawab waktu tersebut tersedia silahkan melakukan pembayaran DP sebesar 50% ke Rekening: \n ShopeePay dan Dana dengan nomor 085353378007 (atas nama Vinza Studio / Izzan).`;
                 const phoneNumber = '6285353378007'; // Nomor ShopeePay dan Dana
                 const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
