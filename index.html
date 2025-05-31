@@ -50,6 +50,12 @@
             font-style: italic;
             color: #555;
         }
+
+        .whatsapp-link {
+            color: #4CAF50;
+            text-decoration: underline;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -117,10 +123,14 @@
             <select id="time" name="time" required>
                 <option value="">Pilih Waktu</option>
             </select>
+            <div class="note">
+                Silakan konfirmasi ketersediaan waktu booking melalui WhatsApp: 
+                <span class="whatsapp-link" onclick="openWhatsApp()">085720800272</span>
+            </div>
 
             <div class="payment-info" id="paymentInfo">Total Pembayaran: Rp 15.000 (DP: Rp 7.500)</div>
-            <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dari total pembayaran ke rekening ShopeePay/Dan = 085353378007.</div>
-            <div class="note">Harap datang maksimal 15 menit sebelum pemotretan. Dan silahkan konfirmasi sebelum pembayaran ke WA untuk waktu foto apakah tersedia atau tidak</div>
+            <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dari total pembayaran ke rekening ShopeePay dan Dana dengan nomor 085353378007.</div>
+            <div class="note">Harap datang maksimal 15 menit sebelum pemotretan.</div>
 
             <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
         </form>
@@ -160,6 +170,13 @@
                 const total = 15000 * jumlah; // Menghitung total pembayaran
                 const dp = total * 0.5; // Menghitung DP 50%
                 document.getElementById('paymentInfo').textContent = `Total Pembayaran: Rp ${total.toLocaleString('id-ID')} (DP: Rp ${dp.toLocaleString('id-ID')})`;
+            }
+
+            function openWhatsApp() {
+                const phoneNumber = '085720800272';
+                const message = 'Halo, saya ingin konfirmasi ketersediaan waktu booking.';
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
             }
 
             function sendWhatsApp() {
