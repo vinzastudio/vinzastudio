@@ -85,7 +85,18 @@
             <input type="text" id="name" name="name" required>
 
             <label for="jumlah">Jumlah Orang:</label>
-            <input type="number" id="jumlah" name="jumlah" required value="1" onchange="updatePayment()">
+            <select id="jumlah" name="jumlah" required onchange="updatePayment()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
             <label for="date">Tanggal Pemotretan:</label>
             <input type="date" id="date" name="date" required onchange="updateAvailableTimes()">
@@ -107,9 +118,9 @@
                 <option value="">Pilih Waktu</option>
             </select>
 
-            <div class="payment-info" id="paymentInfo">Total Pembayaran: Rp 15.000</div>
-            <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dari total pembayaran ke rekening ShopeePay dan Dana dengan nomor 085353378007.</div>
-            <div class="note">Harap datang maksimal 15 menit sebelum pemotretan.</div>
+            <div class="payment-info" id="paymentInfo">Total Pembayaran: Rp 15.000 (DP: Rp 7.500)</div>
+            <div class="note">Silakan melakukan pembayaran DP Sebesar 50% atau setengahnya dari total pembayaran ke rekening ShopeePay/Dan = 085353378007.</div>
+            <div class="note">Harap datang maksimal 15 menit sebelum pemotretan. Dan silahkan konfirmasi sebelum pembayaran ke WA untuk waktu foto apakah tersedia atau tidak</div>
 
             <button type="button" onclick="sendWhatsApp()">Pesan Sekarang</button>
         </form>
